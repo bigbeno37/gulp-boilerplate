@@ -16,7 +16,7 @@ On top of this, Gulp Boilerplate also comes preinstalled with fully integrated S
 While easily customisable, Gulp Boilerplate comes preinstalled with a prebuilt directory structure in mind. Essentially, all 'final' files go into 'dist' under their correct subfolder, and all 'working' files go into 'src' under their correct subfolder as well. 
 
 ## How do I use this?
-Open up a terminal, navigate to the directory you downloaded / cloned this repo to and type in 'gulp'. After this, all files will be compressed and sent to their respective folders, and BrowserSync will automatically open up a new window using 'index.html'. Simple, right?
+Open up a terminal, navigate to the directory you downloaded / cloned this repo to and type in 'npm install', and then 'gulp'. After this, all files will be compressed and sent to their respective folders, and BrowserSync will automatically open up a new window using 'index.html'. Simple, right?
 
 ## What the heck's File Include
 Ever been working on a big HTML project, and the index.html is over 200 lines long? File Include allows you to easily import html files (just like Stylus / Sass) into specific places in your main file, and have it all be compiled and minified like it were any other regular html file. I've included an example in the src/index.html file, so you can see how it works.
