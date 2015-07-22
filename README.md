@@ -21,3 +21,5 @@ Open up a terminal, navigate to the directory you downloaded / cloned this repo 
 ## Why Stylus and not Sass?
 It's a bit of a lengthy topic, and I'll give you my 100% non-bullshit take on it: because Stylus is easier to write CSS with. Oh, and also the fact that all CSS plugins in this Boilerplate are Stylus plugins. Sorry guys!
 
+## License
+There is no license. Do whatever the fuck you want with this.
