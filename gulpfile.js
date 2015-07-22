@@ -3,7 +3,6 @@ var gulp         = require('gulp'),
 	sourcemaps   = require('gulp-sourcemaps'),
 	uglify       = require('gulp-uglify'),
 	minify       = require('gulp-minify-css'),
-	watch        = require('gulp-watch'),
 	minifyhtml   = require('gulp-minify-html'),
 	browsersync  = require('browser-sync').create(),
 	plumber      = require('gulp-plumber'),
@@ -12,8 +11,7 @@ var gulp         = require('gulp'),
 	fileinclude  = require('gulp-file-include'),
 	nib          = require('nib'),
 	autoprefixer = require('autoprefixer'),
-	postcss      = require('gulp-postcss'),
-	htmlinjector = require('bs-html-injector');
+	postcss      = require('gulp-postcss');
 
 // create a default task and add the watch task to it
 gulp.task('default', ['build-all'], function(){
