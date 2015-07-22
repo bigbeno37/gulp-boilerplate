@@ -1,0 +1,39 @@
+{
+  "name": "",
+  "version": "",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-util": "~3.0.5",
+    "gulp-sourcemaps": "~1.5.2",
+    "gulp-uglify": "~1.2.0",
+    "gulp-minify-css": "~1.1.6",
+    "gulp-watch": "~4.2.4",
+    "gulp-minify-html": "~1.0.3",
+    "gulp-livereload": "~3.8.0",
+    "browser-sync": "^2.7.10",
+    "gulp-plumber": "^1.0.1",
+    "gulp-stylus": "^2.0.5",
+    "jeet": "^6.1.2",
+    "rupture": "^0.6.1",
+    "gulp-file-include": "^0.13.2",
+    "lost": "^6.5.0",
+    "gulp-postcss": "^5.1.9",
+    "autoprefixer": "^5.2.0",
+    "bs-html-injector": "~2.0.4",
+    "nib": "~1.1.0"
+  }
+}
