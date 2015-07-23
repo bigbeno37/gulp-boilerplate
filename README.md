@@ -12,6 +12,8 @@ A boilerplate for gulp featuring all of your favourite NPM packages:
 
 On top of this, Gulp Boilerplate also comes preinstalled with fully integrated Stylus packages Lost, Rupture, and Nib, and features the best aspects of both Skeleton CSS and Boy, all in one single package. This boilerplate is also made with GitHub pages in mind, so if you're developing a splash page for your next big plugin, Gulp Boilerplate is here to help. One upload to the 'gh-pages' branch of your repo, and it will be automatically configured.
 
+NOTE: The human-readable version of index.html will be located inside the src folder, and will be compiled and compressed to the base html file in the main directory!
+
 ## Directory Structure
 While easily customisable, Gulp Boilerplate comes preinstalled with a prebuilt directory structure in mind. Essentially, all 'final' files go into 'dist' under their correct subfolder, and all 'working' files go into 'src' under their correct subfolder as well. 
 

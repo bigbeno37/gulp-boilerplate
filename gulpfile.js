@@ -1,3 +1,6 @@
+var src_path  = "src/",
+    dist_path = "dist/";
+
 var gulp         = require('gulp'),
 	stylus       = require('gulp-stylus'),
 	sourcemaps   = require('gulp-sourcemaps'),
@@ -13,21 +16,22 @@ var gulp         = require('gulp'),
 	autoprefixer = require('autoprefixer'),
 	postcss      = require('gulp-postcss');
 
-// create a default task and add the watch task to it
+// start compiling code as soon as gulp is called, and watch for file changes
 gulp.task('default', ['build-all'], function(){
 	browsersync.init({ server: './' });
 
-	gulp.watch('src/**/*.styl', ['build-css']);
-	gulp.watch('src/**/*.js', ['build-js']);
-	gulp.watch('src/**/*.html', ['build-html']);
+	// watch for changes inside src folder
+	gulp.watch(src_path + '**/*.styl', ['build-css']);
+	gulp.watch(src_path + '**/*.js', ['build-js']);
+	gulp.watch(src_path + '**/*.html', ['build-html']);
 });
 
 // optimise all source code
 gulp.task('build-all', ['build-css', 'build-js', 'build-html']);
 
-// configure the stylus task
+// compile stylus into compressed css
 gulp.task('build-css', function(){
-	return gulp.src('src/stylus/style.styl')
+	return gulp.src(src_path + 'stylus/style.styl')
 	  .pipe(plumber())
 	  .pipe(sourcemaps.init())
 	  .pipe(stylus({use: [rupture(), nib()]}))
@@ -35,32 +39,42 @@ gulp.task('build-css', function(){
 			lost(),
 			autoprefixer()
 		]))
+	  // compress compiled css
 	  .pipe(minify())
 	  .pipe(sourcemaps.write())
-	  .pipe(gulp.dest('dist/css'))
+	  // output compiled + compressed file to dist
+	  .pipe(gulp.dest(dist_path + 'css'))
+	  // update browser
 	  .pipe(browsersync.stream());
 });
 
-// minify js files
+// compile js files and compress them
 gulp.task('build-js', function(){
-	return gulp.src('src/js/**/*.js')
+	return gulp.src(src_path + 'js/**/*.js')
+	  // foces gulp to output errors to terminal
 	  .pipe(plumber())
 	  .pipe(sourcemaps.init())
+	  // compress js files
 	  .pipe(uglify())
 	  .pipe(sourcemaps.write())
-	  .pipe(gulp.dest('dist/js'))
+	  // output file to dist
+	  .pipe(gulp.dest(dist_path + 'js'))
+	  // update browser
 	  .pipe(browsersync.stream());
 });
 
-// minify html files
+// compile html files and compress them
 gulp.task('build-html', function(){
-	return gulp.src('src/index.html')
+	return gulp.src(src_path + 'index.html')
+	  // forces gulp to output errors to terminal
 	  .pipe(plumber())
 	  .pipe(fileinclude({
 			prefix: '@@',
 			basepath: '@file'
 		}))
 	  .pipe(minifyhtml({ conditionals: true, spare: true }))
+	  // output file to main directory
 	  .pipe(gulp.dest('./'))
+	  // update browser
 	  .pipe(browsersync.stream());
 });
