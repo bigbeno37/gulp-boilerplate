@@ -14,7 +14,8 @@ var gulp         = require('gulp'),
 	fileinclude  = require('gulp-file-include'),
 	nib          = require('nib'),
 	autoprefixer = require('autoprefixer'),
-	postcss      = require('gulp-postcss');
+	postcss      = require('gulp-postcss'),
+	jade         = require('gulp-jade');
 
 // start compiling code as soon as gulp is called, and watch for file changes
 gulp.task('default', ['build-all'], function(){
@@ -23,7 +24,7 @@ gulp.task('default', ['build-all'], function(){
 	// watch for changes inside src folder
 	gulp.watch(src_path + '**/*.styl', ['build-css']);
 	gulp.watch(src_path + '**/*.js', ['build-js']);
-	gulp.watch(src_path + '**/*.html', ['build-html']);
+	gulp.watch(src_path + '**/*.jade', ['build-html']);
 });
 
 // optimise all source code
@@ -65,13 +66,10 @@ gulp.task('build-js', function(){
 
 // compile html files and compress them
 gulp.task('build-html', function(){
-	return gulp.src(src_path + 'index.html')
+	return gulp.src(src_path + 'index.jade')
 	  // forces gulp to output errors to terminal
 	  .pipe(plumber())
-	  .pipe(fileinclude({
-			prefix: '@@',
-			basepath: '@file'
-		}))
+	  .pipe(jade())
 	  .pipe(minifyhtml({ conditionals: true, spare: true }))
 	  // output file to main directory
 	  .pipe(gulp.dest('./'))
