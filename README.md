@@ -23,5 +23,10 @@ Open up a terminal, navigate to the directory you downloaded / cloned this repo 
 ## Why Stylus and not Sass?
 It's a bit of a lengthy topic, and I'll give you my 100% non-bullshit take on it: because Stylus is easier to write CSS with. Oh, and also the fact that all CSS plugins in this Boilerplate are Stylus plugins. Sorry guys!
 
+## Why Jade and not regular HTML?
+There's one big reason for this; the ability to include external jade files into a singular jade file and then have that jade file compile into a regular html file. So, basically how CSS preprocessors do it, but with HTML. What this allows is for components of your pages (especially single page applications) to be split up into multiple different jade files, so that you don't have to endlessly scroll down one massive index.html page to make a change to an element.
+
+Also, Jade makes HTML a breeze. In fact, I've even included a basic HTML coditional mixin to make the HTML conditionals (For instance, <--[if lt IE8]>) more intuitive to write. I've included some examples of this in the src/index.jade file for you to check out.
+
 ## License
 There is no license. Do whatever the fuck you want with this.
