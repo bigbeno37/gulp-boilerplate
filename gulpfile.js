@@ -11,7 +11,6 @@ var gulp         = require('gulp'),
 	plumber      = require('gulp-plumber'),
 	lost         = require('lost'),
 	rupture      = require('rupture'),
-	fileinclude  = require('gulp-file-include'),
 	nib          = require('nib'),
 	autoprefixer = require('autoprefixer'),
 	postcss      = require('gulp-postcss'),
@@ -64,7 +63,7 @@ gulp.task('build-js', function(){
 	  .pipe(browsersync.stream());
 });
 
-// compile html files and compress them
+// compile jade files and compress them
 gulp.task('build-html', function(){
 	return gulp.src(src_path + 'index.jade')
 	  // forces gulp to output errors to terminal
