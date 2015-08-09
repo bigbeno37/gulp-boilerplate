@@ -11,6 +11,8 @@ html.no-js(lang="en")
         p
           | You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.
 
+    include jade/title.jade
+    include jade/plugins.jade
 
 
 
@@ -23,9 +25,9 @@ html.no-js(lang="en")
       script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
       script window.jQuery || document.write('<script src="dist/js/vendor/jquery-1.11.2.min.js"><\/script>')
 
-    +ie('if gt IE 8')
+    +ieSpecial('if gt IE')
       script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
       script window.jQuery || document.write('<script src="dist/js/vendor/jquery-2.1.3.min.js"><\/script>')
-    
+
     script(src="dist/js/plugins.js")
     script(src="dist/js/script.js")
