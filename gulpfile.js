@@ -5,8 +5,8 @@ var gulp         = require('gulp'),
 	stylus       = require('gulp-stylus'),
 	sourcemaps   = require('gulp-sourcemaps'),
 	uglify       = require('gulp-uglify'),
-	minify       = require('gulp-minify-css'),
-	minifyhtml   = require('gulp-minify-html'),
+	minify       = require('gulp-cssnano'),
+	minifyhtml   = require('gulp-htmlmin'),
 	browsersync  = require('browser-sync').create(),
 	plumber      = require('gulp-plumber'),
 	lost         = require('lost'),
@@ -63,13 +63,13 @@ gulp.task('build-js', function(){
 	  .pipe(browsersync.stream());
 });
 
-// compile jade files and compress them
+// compile jade files and compress them♠
 gulp.task('build-html', function(){
 	return gulp.src(src_path + 'index.jade')
 	  // forces gulp to output errors to terminal
 	  .pipe(plumber())
 	  .pipe(jade())
-	  .pipe(minifyhtml({ conditionals: true, spare: true }))
+	  .pipe(minifyhtml())
 	  // output file to main directory
 	  .pipe(gulp.dest('./'))
 	  // update browser
