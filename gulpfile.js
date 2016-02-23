@@ -18,6 +18,9 @@ var gulp         = require('gulp'),
 
 // start compiling code as soon as gulp is called, and watch for file changes
 gulp.task('default', ['build-all'], function(){
+	
+	/* If not on c9.io, make sure to remove 'host: process.env.IP' and 'port: process.env.PORT'
+	   or replace them with your own details */
 	browsersync.init({ server: './', host: process.env.IP, port: process.env.PORT});
 
 	// watch for changes inside src folder
