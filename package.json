@@ -1,17 +1,17 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
+  "name": "Gulp Boilerplate",
+  "version": "1.0",
+  "description": "A boilerplate for gulp featuring your favourite modules!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/bigbeno37/gulp-boilerplate.git"
   },
-  "author": "",
-  "license": "",
+  "author": "bigbeno37",
+  "license": "The Unlicense",
   "bugs": {
     "url": ""
   },
