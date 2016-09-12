@@ -1,5 +1,45 @@
 // Import relevant stylus files...
-@import 'styles/global.styl'
+@import 'styles/skeleton.styl'
+@import 'styles/introduction.styl'
 
-@import 'styles/title.styl'
-@import 'styles/plugins.styl'
+// Force Lost to use flex
+@lost flexbox flex;
+
+body{
+    // Retrieved from http://subtlepatterns.com/
+    background-image: url("../img/weather.png");
+}
+
+// The div that contains the div that houses the main text
+.container{
+    // Create grid 960px in width
+    lost-center: 960px;
+    
+    // Centering .center-box
+    // https://css-tricks.com/centering-css-complete-guide/
+    // ^ Best resource I've ever seen on centering in CSS
+    // Like seriously
+    // Why is this so hard?
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+
+    // The div that houses the main text and makes it easier to vertically center
+    .center-box{
+        // Every .item will take up the whole width of the grid
+        // Could also be '1/5' for five items per row
+        lost-column: 1/1;
+        
+        text-align: center;
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0px 10px 37px -3px rgba(0,0,0,0.25);
+        border: 0px solid grey;
+        border-bottom-width: 2px;
+        
+        h1{
+            font-size: 7em;
+        }
+    }
+}

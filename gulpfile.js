@@ -1,12 +1,9 @@
-var src_path  = "src/",
-    dist_path = "dist/";
-
 var gulp         = require('gulp'),
 	stylus       = require('gulp-stylus'),
 	sourcemaps   = require('gulp-sourcemaps'),
 	uglify       = require('gulp-uglify'),
-	minify       = require('gulp-minify-css'),
-	minifyhtml   = require('gulp-minify-html'),
+	minify       = require('gulp-cssnano'),
+	minifyhtml   = require('gulp-htmlmin'),
 	browsersync  = require('browser-sync').create(),
 	plumber      = require('gulp-plumber'),
 	lost         = require('lost'),
@@ -14,24 +11,34 @@ var gulp         = require('gulp'),
 	nib          = require('nib'),
 	autoprefixer = require('autoprefixer'),
 	postcss      = require('gulp-postcss'),
-	jade         = require('gulp-jade');
+	pug          = require('gulp-pug');
 
-// start compiling code as soon as gulp is called, and watch for file changes
+// Feel free to change these to your setup
+var path = {
+	src_path: "src/",
+	dist_path: "dist/"
+};
+
+// Start compiling code as soon as gulp is called, and watch for file changes
 gulp.task('default', ['build-all'], function(){
-	browsersync.init({ server: './' });
 
-	// watch for changes inside src folder
-	gulp.watch(src_path + '**/*.styl', ['build-css']);
-	gulp.watch(src_path + '**/*.js', ['build-js']);
-	gulp.watch(src_path + '**/*.jade', ['build-html']);
+	// Start the browsersync server
+	browsersync.init({
+		server: "./"
+	});
+
+	// Watch for changes inside src folder
+	gulp.watch(path.src_path + '**/*.styl', ['build-css']);
+	gulp.watch(path.src_path + '**/*.js', ['build-js']);
+	gulp.watch(path.src_path + '**/*.pug', ['build-html']);
 });
 
-// optimise all source code
+// Optimise all source code
 gulp.task('build-all', ['build-css', 'build-js', 'build-html']);
 
-// compile stylus into compressed css
+// Compile stylus into compressed css
 gulp.task('build-css', function(){
-	return gulp.src(src_path + 'stylus/style.styl')
+	return gulp.src(path.src_path + 'stylus/style.styl')
 	  .pipe(plumber())
 	  .pipe(sourcemaps.init())
 	  .pipe(stylus({use: [rupture(), nib()]}))
@@ -39,39 +46,39 @@ gulp.task('build-css', function(){
 			lost(),
 			autoprefixer()
 		]))
-	  // compress compiled css
-	  .pipe(minify())
+	  // Compress compiled css
+	  // .pipe(minify())
 	  .pipe(sourcemaps.write())
-	  // output compiled + compressed file to dist
-	  .pipe(gulp.dest(dist_path + 'css'))
-	  // update browser
+	  // Output compiled + compressed file to dist
+	  .pipe(gulp.dest(path.dist_path + 'css'))
+	  // Update browser
 	  .pipe(browsersync.stream());
 });
 
-// compile js files and compress them
+// Compile js files and compress them
 gulp.task('build-js', function(){
-	return gulp.src(src_path + 'js/**/*.js')
-	  // foces gulp to output errors to terminal
+	return gulp.src(path.src_path + 'js/**/*.js')
+	  // Forces gulp to output errors to terminal
 	  .pipe(plumber())
 	  .pipe(sourcemaps.init())
-	  // compress js files
+	  // Compress js files
 	  .pipe(uglify())
 	  .pipe(sourcemaps.write())
-	  // output file to dist
-	  .pipe(gulp.dest(dist_path + 'js'))
-	  // update browser
+	  // Output file to dist/
+	  .pipe(gulp.dest(path.dist_path + 'js'))
+	  // Update browser
 	  .pipe(browsersync.stream());
 });
 
-// compile jade files and compress them
+// Compile pug files and compress them
 gulp.task('build-html', function(){
-	return gulp.src(src_path + 'index.jade')
-	  // forces gulp to output errors to terminal
+	return gulp.src(path.src_path + 'index.pug')
+	  // Forces gulp to output errors to terminal
 	  .pipe(plumber())
-	  .pipe(jade())
-	  .pipe(minifyhtml({ conditionals: true, spare: true }))
-	  // output file to main directory
+	  .pipe(pug())
+	  // .pipe(minifyhtml())
+	  // Output file to main directory
 	  .pipe(gulp.dest('./'))
-	  // update browser
+	  // Update browser
 	  .pipe(browsersync.stream());
 });

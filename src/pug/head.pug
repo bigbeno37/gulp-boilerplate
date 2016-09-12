@@ -1,16 +1,22 @@
-include utils.jade
+include utils.pug
 
+// Fairly standard HTML5 Boilerplate stuff
 meta(charset="utf-8")
 meta(http-equiv="x-ua-compatible", content="ie=edge")
+
+// !!Make sure to change this!!
 title Gulp Boilerplate
+
 meta(name="description", content="")
 meta(name="viewport", content="width=device-width, initial-scale=1")
 
 link(href='http://fonts.googleapis.com/css?family=Raleway', rel='stylesheet', type='text/css')
 link(rel="stylesheet" href="dist/css/vendor/reset/reset.css")
-link(rel="stylesheet", href="dist/css/vendor/skeleton.css")
 
+// The actual style CSS file
+// The JS file is located in index.pug
 link(rel="stylesheet", href="dist/css/style.css")
+
 script(src="dist/js/vendor/modernizr-2.8.3.min.js")
 
 +ie('if lt IE 9')
