@@ -1,6 +1,3 @@
-var src_path  = "src/",
-    dist_path = "dist/";
-
 var gulp         = require('gulp'),
 	stylus       = require('gulp-stylus'),
 	sourcemaps   = require('gulp-sourcemaps'),
@@ -16,6 +13,12 @@ var gulp         = require('gulp'),
 	postcss      = require('gulp-postcss'),
 	pug          = require('gulp-pug');
 
+// Feel free to change these to your setup
+var path = {
+	src_path: "src/",
+	dist_path: "dist/"
+};
+
 // Start compiling code as soon as gulp is called, and watch for file changes
 gulp.task('default', ['build-all'], function(){
 
@@ -25,9 +28,9 @@ gulp.task('default', ['build-all'], function(){
 	});
 
 	// Watch for changes inside src folder
-	gulp.watch(src_path + '**/*.styl', ['build-css']);
-	gulp.watch(src_path + '**/*.js', ['build-js']);
-	gulp.watch(src_path + '**/*.pug', ['build-html']);
+	gulp.watch(path.src_path + '**/*.styl', ['build-css']);
+	gulp.watch(path.src_path + '**/*.js', ['build-js']);
+	gulp.watch(path.src_path + '**/*.pug', ['build-html']);
 });
 
 // Optimise all source code
@@ -35,7 +38,7 @@ gulp.task('build-all', ['build-css', 'build-js', 'build-html']);
 
 // Compile stylus into compressed css
 gulp.task('build-css', function(){
-	return gulp.src(src_path + 'stylus/style.styl')
+	return gulp.src(path.src_path + 'stylus/style.styl')
 	  .pipe(plumber())
 	  .pipe(sourcemaps.init())
 	  .pipe(stylus({use: [rupture(), nib()]}))
@@ -44,17 +47,17 @@ gulp.task('build-css', function(){
 			autoprefixer()
 		]))
 	  // Compress compiled css
-	  .pipe(minify())
+	  // .pipe(minify())
 	  .pipe(sourcemaps.write())
 	  // Output compiled + compressed file to dist
-	  .pipe(gulp.dest(dist_path + 'css'))
+	  .pipe(gulp.dest(path.dist_path + 'css'))
 	  // Update browser
 	  .pipe(browsersync.stream());
 });
 
 // Compile js files and compress them
 gulp.task('build-js', function(){
-	return gulp.src(src_path + 'js/**/*.js')
+	return gulp.src(path.src_path + 'js/**/*.js')
 	  // Forces gulp to output errors to terminal
 	  .pipe(plumber())
 	  .pipe(sourcemaps.init())
@@ -62,18 +65,18 @@ gulp.task('build-js', function(){
 	  .pipe(uglify())
 	  .pipe(sourcemaps.write())
 	  // Output file to dist/
-	  .pipe(gulp.dest(dist_path + 'js'))
+	  .pipe(gulp.dest(path.dist_path + 'js'))
 	  // Update browser
 	  .pipe(browsersync.stream());
 });
 
 // Compile pug files and compress them
 gulp.task('build-html', function(){
-	return gulp.src(src_path + 'index.jade')
+	return gulp.src(path.src_path + 'index.pug')
 	  // Forces gulp to output errors to terminal
 	  .pipe(plumber())
 	  .pipe(pug())
-	  .pipe(minifyhtml())
+	  // .pipe(minifyhtml())
 	  // Output file to main directory
 	  .pipe(gulp.dest('./'))
 	  // Update browser

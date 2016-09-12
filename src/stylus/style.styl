@@ -1,23 +1,30 @@
 // Import relevant stylus files...
+@import 'styles/skeleton.styl'
 @import 'styles/introduction.styl'
 
-.centerText{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    text-align: center;
-    
-    h1{
-        font-size: 4em;
-    }
-    
-    h2{
-        font-size: 2.25em;
-    }
-}
+// Force Lost to use flex
+@lost flexbox flex;
 
-.centerTextBody{
-    position: relative;
+// The div that contains the div that houses the main text
+.container{
+    // Create grid 960px in width
+    lost-center: 960px;
+    
+    // Centering .center-box
+    // https://css-tricks.com/centering-css-complete-guide/
+    // ^ Best resource I've ever seen on centering in CSS
+    // Like seriously
+    // Why is this so hard?
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+
+    // The div that houses the main text and makes it easier to vertically center
+    .center-box{
+        // Every .item will take up the whole width of the grid
+        // Could also be '1/5' for five items per row
+        lost-column: 1/1;
+        
+        text-align: center;
+    }
 }
