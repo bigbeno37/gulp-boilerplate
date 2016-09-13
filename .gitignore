@@ -1,10 +1,6 @@
 
 # Created by https://www.gitignore.io/api/stylus,node,sublimetext,webstorm,phpstorm,git
 
-### Stylus ###
-*.css
-
-
 ### Node ###
 # Logs
 logs
