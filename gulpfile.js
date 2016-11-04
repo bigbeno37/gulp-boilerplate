@@ -3,7 +3,6 @@ var gulp         = require('gulp'),
 	sourcemaps   = require('gulp-sourcemaps'),
 	uglify       = require('gulp-uglify'),
 	minify       = require('gulp-cssnano'),
-	minifyhtml   = require('gulp-htmlmin'),
 	browsersync  = require('browser-sync').create(),
 	plumber      = require('gulp-plumber'),
 	lost         = require('lost'),
@@ -11,7 +10,9 @@ var gulp         = require('gulp'),
 	nib          = require('nib'),
 	autoprefixer = require('autoprefixer'),
 	postcss      = require('gulp-postcss'),
-	pug          = require('gulp-pug');
+	pug          = require('gulp-pug'),
+	bootstrap    = require('bootstrap-styl'),
+	nano         = require('gulp-cssnano');
 
 // Feel free to change these to your setup
 var path = {
@@ -41,13 +42,14 @@ gulp.task('build-css', function(){
 	return gulp.src(path.src_path + 'stylus/style.styl')
 	  .pipe(plumber())
 	  .pipe(sourcemaps.init())
-	  .pipe(stylus({use: [rupture(), nib()]}))
+	  .pipe(stylus({use: [rupture(), nib(), bootstrap()]}))
 	  .pipe(postcss([
 			lost(),
 			autoprefixer()
 		]))
 	  // Compress compiled css
 	  // .pipe(minify())
+	  .pipe(nano())
 	  .pipe(sourcemaps.write())
 	  // Output compiled + compressed file to dist
 	  .pipe(gulp.dest(path.dist_path + 'css'))
@@ -76,7 +78,6 @@ gulp.task('build-html', function(){
 	  // Forces gulp to output errors to terminal
 	  .pipe(plumber())
 	  .pipe(pug())
-	  // .pipe(minifyhtml())
 	  // Output file to main directory
 	  .pipe(gulp.dest('./'))
 	  // Update browser
