@@ -8,7 +8,7 @@ A boilerplate for gulp featuring all of your favourite NPM packages such as:
 * [**PostCSS**](http://postcss.org/)
 * [**Lost**](http://lostgrid.org/)
     
-On top of this, Gulp Boilerplate also comes preinstalled with fully integrated Stylus packages such as Rupture and Nib, and features the best aspects of both [Skeleton CSS](http://getskeleton.com/) and [Boy](https://github.com/corysimmons/boy), all in one single package. This boilerplate is also made with GitHub Pages in mind, so if you're developing a splash page for your next big plugin, *Gulp Boilerplate is here to help*. 
+On top of this, Gulp Boilerplate also comes preinstalled with fully integrated Stylus packages such as Rupture and Nib, and allows you to choose between using Bootstrap or utilising the best aspects of both [Skeleton CSS](http://getskeleton.com/) and [Boy](https://github.com/corysimmons/boy), all in one single package. This boilerplate is also made with GitHub Pages in mind, so if you're developing a splash page for your next big plugin, *Gulp Boilerplate is here to help*. 
 
 **One upload to the 'gh-pages' branch of your repo, and Gulp Boilerplate will be automatically configured**.
 
@@ -35,18 +35,24 @@ Additionally, Jade makes HTML a breeze. In fact, I've even included a basic HTML
 * Autoprefixer
 * Gulp
 	* Gulp-cssnano
-	* Gulp-htmlmin
 	* Gulp-plumber
 	* Gulp-postcss
 	* Gulp-pug
 	* Gulp-sourcemaps
 	* Gulp-stylus
 	* Gulp-uglify
+	* Gulp-cssnano
 * Lost
 * Nib
 * PostCSS
 * Pug
 * Rupture
+* Bootstrap-styl
+
+## What if I don't want to use the whole of bootstrap?
+Instead of using `@import bootstrap`, it is instead recommended to first import both Bootstrap's variables and mixins via `@import 'bootstrap/variables'` and `@import 'bootstrap/mixins'` and to next choose specific Bootstrap packages to import, such as `@import 'bootstrap/grid'`, `@import 'bootstrap/code'`, and `@import 'bootstrap/type'`. 
+
+[The full list of packages that can be imported are able to be found here, in Bootstrap-styl's Github repo.](https://github.com/maxmx/bootstrap-stylus)
 
 ## License
 Gulp Boilerplate is licensed under The Unlicense. Basically, so long as you don't hold me liable for anything you do with this, do whatever you want with this.

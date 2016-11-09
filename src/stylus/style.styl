@@ -1,30 +1,24 @@
+/* ---------------------------------------------------------------- */
+//  This is what Gulp Boilerplate renders in the final style.css,
+//  so import any custom code into here in the order you want them
+//  to appear
+/* ---------------------------------------------------------------- */
+
+// These two are mandatory if you want anything to work in Bootstrap
+@import 'bootstrap/variables'
+@import 'bootstrap/mixins'
+
+// Now we get to the more optional imports, though without these
+// everything's gonna look all screwed up
+@import 'bootstrap/grid'
+@import 'bootstrap/type'
+
+// Don't want to use Bootstrap at all? Remove the previous lines
+// and uncomment the following to use Skeleton CSS
+// @import 'styles/skeleton.styl'
+
 // Import relevant stylus files...
-@import 'styles/skeleton.styl'
-@import 'styles/introduction.styl'
+@import 'styles/splash.styl'
 
-// Force Lost to use flex
-@lost flexbox flex;
-
-// The div that contains the div that houses the main text
-.container{
-    // Create grid 960px in width
-    lost-center: 960px;
-    
-    // Centering .center-box
-    // https://css-tricks.com/centering-css-complete-guide/
-    // ^ Best resource I've ever seen on centering in CSS
-    // Like seriously
-    // Why is this so hard?
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-
-    // The div that houses the main text and makes it easier to vertically center
-    .center-box{
-        // Every .item will take up the whole width of the grid
-        // Could also be '1/5' for five items per row
-        lost-column: 1/1;
-        
-        text-align: center;
-    }
-}
+// Import your own custom files...
+@import 'styles/custom.styl'
